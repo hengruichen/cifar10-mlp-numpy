@@ -1,0 +1,35 @@
+# config.yaml
+
+model:
+  input_dim: 3072
+  hidden_dim1: 256
+  hidden_dim2: 128
+  hidden_dim3: 64
+  output_dim: 10
+  activation: relu
+  init_method: he    
+
+train:
+  batch_size: 64
+  num_epochs: 70
+  learning_rate: 0.01
+  lr_decay: 0.95
+  weight_decay: 0.0001
+  save_path: weights/best_model.pkl
+  log_path: logs/history.pkl
+
+search:
+  structure: [
+    [128, 64, 32],
+    [256, 128, 64],
+    [512, 256, 128]
+  ]
+  learning_rate: [0.01, 0.001]
+  weight_decay: [0.0, 0.0001, 0.001]
+  init_method: ['he', 'xavier', 'normal']
+  activation: ['relu', 'tanh', 'sigmoid']
+
+data:
+  data_dir: cifar10
+  val_ratio: 0.1
+  shuffle: true
